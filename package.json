@@ -1,21 +1,25 @@
 {
   "name": "my-app",
   "version": "0.1.0",
+  "main": "./build/electron/main.js",
+  "homepage": "./",
   "private": true,
   "dependencies": {
+    "@electron/remote": "^2.0.8",
     "@nanostores/react": "^0.1.5",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.1",
-    "@types/node": "^16.11.26",
     "@types/node-xlsx": "^0.15.3",
     "@types/react": "^17.0.40",
     "@types/react-dom": "^17.0.13",
     "clsx": "^1.1.1",
+    "concurrently": "^7.1.0",
+    "cross-env": "^7.0.3",
     "dialog": "^0.3.1",
-    "electron": "^17.1.2",
-    "electron-builder": "^22.14.13",
+    "electron": "^18.0.3",
+    "electron-builder": "^23.0.3",
     "electronmon": "^2.0.2",
     "fs": "^0.0.1-security",
     "multiselect-react-dropdown": "^2.0.21",
@@ -27,6 +31,7 @@
     "react-dropzone": "^12.0.4",
     "react-scripts": "5.0.0",
     "typescript": "^4.6.2",
+    "wait-on": "^6.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,13 +39,14 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "electron:start": "concurrently -k \"cross-env BROWSER=none npm run start\" \"wait-on http://localhost:3000 && electronmon .\"",
+    "electron:start": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\"",
     "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
     "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js"
   },
   "build": {
     "appId": "com.electron.mailbuilder",
     "productName": "Mail Builder",
+    "extends": null,
     "files": [
       "build/**/*",
       "node_modules/**/*"
@@ -71,5 +77,8 @@
     "development": [
       "last 1 electron version"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23"
   }
 }

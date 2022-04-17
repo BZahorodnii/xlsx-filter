@@ -9,7 +9,7 @@ import Filters from '../../components/Filters/Filters';
 import styles from './Panel.module.sass';
 
 const Panel: React.FC = () => {
-  const sheetList = useStore(sheet);
+  const sheetStore = useStore(sheet);
   const colsNumber = useStore(maxColsNumber);
 
   return (
@@ -29,7 +29,7 @@ const Panel: React.FC = () => {
             );
           })}
         </div>
-        {sheetList.map((item: any[], i) => {
+        {sheetStore.map((item: any[], i) => {
           if (!item.length) return;
           return (
             <ListItem key={`list-${i}`} cols={item} colsNumber={colsNumber} />

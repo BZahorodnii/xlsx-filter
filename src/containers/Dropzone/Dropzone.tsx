@@ -3,6 +3,7 @@ import React, { useCallback } from 'react';
 import xlsx from 'node-xlsx';
 import { useDropzone } from 'react-dropzone';
 import { addSheet } from '../../stores/sheet';
+import { addInitialSheet } from '../../stores/initialSheet';
 import { rewriteMaxColsNumber } from '../../stores/maxColsNumber';
 
 import styles from './Dropzone.module.sass';
@@ -10,7 +11,7 @@ import styles from './Dropzone.module.sass';
 const Dropzone: React.FC = () => {
 
   const onDrop = useCallback((acceptedFiles) => {
-    acceptedFiles.forEach((file) => {
+    acceptedFiles.forEach((file: any) => {
       const reader = new FileReader();
 
       reader.onabort = () => console.log('file reading was aborted');
@@ -20,9 +21,10 @@ const Dropzone: React.FC = () => {
         const workSheetsFromBuffer = xlsx.parse(binaryStr);
         const data: any[] = workSheetsFromBuffer[0].data;
         
-        const maxColsNumber: number = Math.max(...(data.map(item => item.length)));
+        const maxColsNumber: any = Math.max(...(data.map(item => item.length)));
         rewriteMaxColsNumber(maxColsNumber);
         addSheet(data);
+        addInitialSheet(data);
 
         // Exporting
         // const buffer = xlsx.build([{name: 'mySheetName', data}]);
