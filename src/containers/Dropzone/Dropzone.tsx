@@ -1,6 +1,12 @@
 import React, { useCallback } from 'react';
 // import { read, utils, writeFileXLSX } from 'xlsx';
-import xlsx from 'node-xlsx';
+// import xlsx from 'node-xlsx';
+// import * as XLSX from 'xlsx/xlsx.mjs';
+// import parseXlsx from 'excel';
+// import xlsxParser from 'xls-parser';
+// import readXlsxFile from 'read-excel-file'
+// import excel from 'xlsx-parse-stream';
+// import xlsx2json from 'xlsx2json';
 import { useDropzone } from 'react-dropzone';
 import { addSheet } from '../../stores/sheet';
 import { addInitialSheet } from '../../stores/initialSheet';
@@ -18,14 +24,25 @@ const Dropzone: React.FC = () => {
       reader.onerror = () => console.log('file reading has failed');
       reader.onload = () => {
         const binaryStr = reader.result;
-        const workSheetsFromBuffer = xlsx.parse(binaryStr);
-        const data: any[] = workSheetsFromBuffer[0].data;
         
-        const maxColsNumber: any = Math.max(...(data.map(item => item.length)));
-        rewriteMaxColsNumber(maxColsNumber);
-        addSheet(data);
-        addInitialSheet(data);
+        
+        // workable code below 
 
+        // const workSheetsFromBuffer = xlsx.parse(binaryStr);
+        // console.log(workSheetsFromBuffer);
+        // const data: any[] = workSheetsFromBuffer[0].data;
+        
+        // const maxColsNumber: any = Math.max(...(data.map(item => item.length)));
+        // rewriteMaxColsNumber(maxColsNumber);
+        // addSheet(data);
+        // addInitialSheet(data);
+
+        
+        
+        
+        
+        
+        
         // Exporting
         // const buffer = xlsx.build([{name: 'mySheetName', data}]);
         // console.log(buffer);

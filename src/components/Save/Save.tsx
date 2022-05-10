@@ -9,7 +9,6 @@ const Save: React.FC = () => {
     window.electron.on('on-file-select', (path) => {
       console.log(path)
     })
-    // window.api.saveFile('srr');
   };
 
   return (

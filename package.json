@@ -21,7 +21,10 @@
     "electron": "^18.0.3",
     "electron-builder": "^23.0.3",
     "electronmon": "^2.0.2",
+    "excel": "^1.0.1",
+    "exceljs": "^4.3.0",
     "fs": "^0.0.1-security",
+    "js-xlsx": "^0.8.22",
     "multiselect-react-dropdown": "^2.0.21",
     "nanostores": "^0.5.12",
     "node-sass": "^7.0.1",
@@ -30,9 +33,13 @@
     "react-dom": "^17.0.2",
     "react-dropzone": "^12.0.4",
     "react-scripts": "5.0.0",
+    "read-excel-file": "^5.2.28",
     "typescript": "^4.6.2",
     "wait-on": "^6.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "xls-parser": "^3.1.0",
+    "xlsx-parse-stream": "^1.0.3",
+    "xlsx2json": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
